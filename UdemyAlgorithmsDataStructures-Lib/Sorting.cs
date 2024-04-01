@@ -24,7 +24,7 @@
         public static void SelectionSort(int[] array)
         {
             // Selection sort is similar to Bubble sort however instead of swapping two elements next to each other 
-            // we swap the largest element with the wall and then deincrement the wall
+            // We swap the largest element with the wall and then deincrement the wall
             // Quadratic O(n^2)
 
             for (int wallIndex = array.Length -1; wallIndex > 0; wallIndex--)
@@ -59,6 +59,34 @@
                 }
 
                 array[i] = unsorted;
+            }
+        }
+
+        public static void ShellSort(int[] array)
+        {
+            // Shell sort uses a gap to pre sort most of the array and then switches to insertion sort to finish.
+            // To calculate the gap for a shell sort we can rely on the "universal" sequence of max gap < N/3 where N is the length of the array.
+            // Alternatively we can use max gap = N/2 at each step and then reduce the gap with gap /= 2
+
+            // Shell sort will then take the element at the start and gap and switch if the higher is lower, both forwards and backwards.
+            // When the gap becomes 1 it becomes the insertion sort.
+            // Ranging from O(n^1.5) to O(n log n) dependant on gap sequence.
+
+            int gap = 1;
+            while (gap < array.Length / 3)
+                gap = 3 * gap + 1;
+
+            while (gap >= 1)
+            {
+                for (int i = gap; i < array.Length; i++)
+                {
+                    for (int j = i; j >= gap && array[j] < array[j-gap]; j -= gap)
+                    {
+                        Swap(array, j, j - gap);
+                    }
+                }
+
+                gap /= 3;
             }
         }
 
