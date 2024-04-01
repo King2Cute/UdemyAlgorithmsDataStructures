@@ -56,5 +56,11 @@ namespace UdemyAlgorithmsDataStructures_Lib.Test
         {
             RunTestsForSortAlgorithm(Sorting.SelectionSort);
         }
+
+        [Test]
+        public void InsertionSort_ValidInput_SortedInput()
+        {
+            RunTestsForSortAlgorithm(Sorting.InsertionSort);
+        }
     }
 }
