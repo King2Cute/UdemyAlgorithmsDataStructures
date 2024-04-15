@@ -94,6 +94,30 @@
         {
             // merge sort is split into two different phase: splitting and then merging.
 
+            // the splitting is essentially taking the array and halfing it, in cases of a none even half you will end up just splitting it where 
+            // one half is bigger then the other. You keep splitting till your left with a sub arrays and sibling arrays
+            // 38 27 43 3 9 82 10 
+            // splits to 
+            // 38 27 43 3 | 9 82 10
+            // splits to 
+            // 38 27 | 43 3 | 9 82 | 10
+            // splits to 
+            // 38 | 27 | 43 | 3 | 9 | 82 | 10
+            // 2 merged sibling arrays on the left, 1 on the right.
+
+            // we then merge these arrays back again sorting them in the process 
+            // 27 38 | 3 43 | 9 82 | 10
+            // finally we can go through the arrays and compare sorting into the correct order. we do this by first using the 2 sibling arrays 
+            // on the left hand side and it goes something like 
+            // 3 is less then 27, 27 is less then 43, 38 is less then 43 finally 43
+            // 3, 27, 38, 43
+            // then we move onto the right side - 9 is less then 10, 10 is less then 82 
+            // 9, 10, 82
+            // finally we take both out 3, 27, 38, 43 and 9, 10, 82 and do the same
+            // 3 is less then 9, 9 is less then 27, 10 is less then 27, 27 is les then 82, 38 is less then 82, 43 is less then 82
+            // 3, 9, 10, 27, 38, 43, 82
+
+
             int[] aux = new int[array.Length];
             Sort(0, array.Length - 1);
 
