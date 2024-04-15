@@ -46,27 +46,33 @@ namespace UdemyAlgorithmsDataStructures_Lib.Test
         }
 
         [Test]
-        public void BubbleSort_ValidInput_SortedInput()
+        public void BubbleSort_ValidInput_SortedOutput()
         {
             RunTestsForSortAlgorithm(Sorting.BubbleSort);
         }
 
         [Test]
-        public void SelectionSort_ValidInput_SortedInput()
+        public void SelectionSort_ValidInput_SortedOutput()
         {
             RunTestsForSortAlgorithm(Sorting.SelectionSort);
         }
 
         [Test]
-        public void InsertionSort_ValidInput_SortedInput()
+        public void InsertionSort_ValidInput_SortedOutput()
         {
             RunTestsForSortAlgorithm(Sorting.InsertionSort);
         }
 
         [Test]
-        public void ShellSort_ValidInput_SortedInput()
+        public void ShellSort_ValidInput_SortedOutput()
         {
             RunTestsForSortAlgorithm(Sorting.ShellSort);
+        }
+
+        [Test]
+        public void MergeSort_ValidInput_SortedOutput()
+        {
+            RunTestsForSortAlgorithm(Sorting.MergeSort);
         }
     }
 }
