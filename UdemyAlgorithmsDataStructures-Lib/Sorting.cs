@@ -7,6 +7,7 @@
 			// This is a good starting point but it will most likely not be used as the performance is bad.
 			// Bubble sort swaps increments through the array and swaps adjacent elements if i is greater then i+1.
 			// Once we hit the wall we deincrement it.
+
 			// Quadratic O(n^2)
 
 			for (int wallIndex = array.Length - 1; wallIndex > 0; wallIndex--)
@@ -25,6 +26,7 @@
 		{
 			// Selection sort is similar to Bubble sort however instead of swapping two elements next to each other 
 			// We swap the largest element with the wall and then deincrement the wall
+
 			// Quadratic O(n^2)
 
 			for (int wallIndex = array.Length - 1; wallIndex > 0; wallIndex--)
@@ -47,6 +49,7 @@
 			// Insertion sort takes the element of the wall, saves to an unsorted variable and then works backwards to shift and find 
 			// the place of where the element should be inserted.
 			// If the element infront of the wall is greater then the element before the wall we leave it in place and immediatly don't hit the inner for loop.
+
 			// Quadratic O(n^2)
 
 			for (int wallIndex = 1; wallIndex <= array.Length - 1; wallIndex++)
@@ -70,7 +73,9 @@
 
 			// Shell sort will then take the element at the start and gap and switch if the higher is lower, both forwards and backwards.
 			// When the gap becomes 1 it becomes the insertion sort.
-			// Ranging from Quadractic O(n^1.5) to linearithmic O(n log n) dependant on gap sequence.
+
+			//Best: O(nlogn): Loglinear complexity.
+			//Worst: 
 
 			int gap = 1;
 			while (gap < array.Length / 3)
@@ -117,6 +122,8 @@
 			// 3 is less then 9, 9 is less then 27, 10 is less then 27, 27 is les then 82, 38 is less then 82, 43 is less then 82
 			// 3, 9, 10, 27, 38, 43, 82
 
+			// Linearithmic O(n log n)
+
 
 			int[] aux = new int[array.Length];
 			Sort(0, array.Length - 1);
@@ -153,12 +160,17 @@
 						array[k] = aux[i++];
 				}
 			}
-
-			// Linearithmic O(n log n)
 		}
 
 		public static void QuickSort(int[] array)
 		{
+			// Divide and conquer comparison based
+			// Choose a pivot array usually first or last 
+			// Reorder so all elements that are smaller are before and larger are after
+			// Recursively repeats until the array is sorted
+
+			// Ranging from Logarithmic O(n log n) to Quadratic O(n^2)
+
 			Sort(0, array.Length - 1);
 
 			void Sort(int low, int high)
@@ -167,6 +179,7 @@
 					return;
 
 				int j = Partition(low, high);
+				Console.WriteLine($"Partition is set to: {j}");
 				Sort(low, j - 1);
 				Sort(j + 1, high);
 			}
@@ -177,6 +190,7 @@
 				int j = high + 1;
 
 				//pivot is the first one in the partition
+				Console.WriteLine($"pivot is {array[low]}");
 				int pivot = array[low];
 
 				while (true)
@@ -185,6 +199,7 @@
 					{
 						if (i == high) break;
 					}
+
 					while (pivot < array[--j])
 					{
 						if (j == low) break;
@@ -205,15 +220,11 @@
 			if (i == j)
 				return;
 
-			//hold the first int 
-			int temp = array[i];
-			//set the second int to the first place
-			array[i] = array[j];
-			//set the first int to the second place
-			array[j] = temp;
+			// Swap array j and array i
+			(array[j], array[i]) = (array[i], array[j]);
 
-			//alternatively use a tuple
-			//(array[j], array[i]) = (array[i], array[j]);
+			Console.WriteLine($"Swapping j and i with i and j: {array[i]}, {array[j]}");
+			array.ToList().ForEach(i => Console.WriteLine(i.ToString()));
 		}
 	}
 }
