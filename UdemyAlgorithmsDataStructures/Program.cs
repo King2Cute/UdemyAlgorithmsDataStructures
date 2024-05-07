@@ -1,4 +1,6 @@
-﻿namespace UdemyAlgorithmsDataStructures
+﻿using UdemyAlgorithmsDataStructures_Lib;
+
+namespace UdemyAlgorithmsDataStructures
 {
 	internal class Program
 	{
@@ -13,6 +15,9 @@
 			// O(n^3): Cubic complexity. - Worst
 			// O(X^n): Exponential time. - Worst
 			// O(n!): Factorial complexity. - Worst
+
+			Searching.TestStack();
+			var index = Searching.BinarySearch(30);
 		}
 	}
 }
