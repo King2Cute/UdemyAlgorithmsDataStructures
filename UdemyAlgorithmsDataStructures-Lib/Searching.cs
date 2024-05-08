@@ -17,6 +17,9 @@
 
 		public static int BinarySearch(int value)
 		{
+			// Binary search takes a mid value by adding the start end end value whilst start is less then end. 
+			// if mid is the value we return it, else if mid is less then the value the start becomes mid + 1, else the end is mid
+
 			int[] intArray = { -20, -15, 2, 7, 20, 30, 54 };
 
 			int start = 0;
@@ -29,7 +32,7 @@
 				{
 					return mid;
 				}
-				else if (intArray[mid] < value) 
+				else if (intArray[mid] < value)
 				{
 					start = mid + 1;
 				}
@@ -40,22 +43,6 @@
 			}
 
 			return -1;
-		}
-
-		public static void TestStack()
-		{
-			int[] array = { 10, 12, 13, 15, 2, 3, 4, 1 };
-			Stack<int> stack = new Stack<int>(array);
-
-			while (stack.Count > 0)
-			{
-				var top = stack.Pop();
-				Console.WriteLine(top);
-			}
-
-			List<int> list = new List<int>();
-			Queue<int> queue = new Queue<int>(array);
-			
 		}
 	}
 }
